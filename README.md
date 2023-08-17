@@ -1,28 +1,15 @@
-# Create T3 App
+# دواء
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+### منصة تهدف الى تسهيل الوصول الى المرضى المحتاجون الذين تكالبت عليهم هموم الصحة والمال، ما جعلهم يعانون من صعوبةٍ في توفير احتياجاتهم الصحية اللازمة, تقوم المنصة بربطهم مع متبرعين قادرين على مساعدتهم وتوفير ما يلزمهم وتهدف المنصة الى تسهيل عملية التبرع بالادوية الزائدة عن الحاجة من خلال البحث عن محتاجين لهذه الادوية.
 
-## What's next? How do I make an app with this?
+تم بناء المنصة باستخدام: Next.JS, Tailwindcss, tRPC, Prisma, and Supabase.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+رابط منصة دواء [https://dawa-on2f73edz-d7mi-b.vercel.app/](https://dawa-on2f73edz-d7mi-b.vercel.app/)
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+# Dawa
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+### A platform that aims to facilitate access to needy patients who are overwhelmed by health and money concerns, which made them suffer from difficulty in providing their necessary health needs. The platform connects them with donors who are able to help them and provide what they need. The platform aims to facilitate the process of donating redundant medicines by searching for needy patients for these medicines.
 
-## Learn More
+to build the platform I used: Next.JS, Tailwindcss, tRPC, Prisma, and Supabase.
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
-
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+Link of Dawa [https://dawa-on2f73edz-d7mi-b.vercel.app/](https://dawa-on2f73edz-d7mi-b.vercel.app/)
