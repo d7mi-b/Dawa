@@ -103,7 +103,7 @@ const Donation = () => {
                 </header>
             }
 
-            <section className="my-4 px-4 grid grid-cols-2 max-sm:grid-cols-1 max-lg:grid-cols-2">
+            <section className="my-4 px-4 grid grid-cols-2 gap-4 max-sm:grid-cols-1">
                 {
                     checkOwner && request_to_donation && request_to_donation.length > 0 &&
                     request_to_donation.map(e => {

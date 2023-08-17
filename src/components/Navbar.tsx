@@ -21,7 +21,7 @@ const Navbar = () => {
                             </section>
                         </li>
                         <section className="flex group max-lg:relative w-full">
-                            <li className="header-color flex flex-col justify-center">
+                            <li className="header-color flex flex-col justify-center lg:hidden">
                                 <FontAwesomeIcon icon={faBars} className="my-1 mr-4 w-5" />
                             </li>
                             <section 
