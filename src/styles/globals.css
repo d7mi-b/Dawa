@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+:root {
+    --font-color: #7D8597;
+    --main-color: #023E8A;
+    --secondary-color: #00B4D8;
+    --hover-color: #ADE8F4;
+}
+
+@font-face {
+    font-family: Tajawal;
+    src: url('../fonts/Tajawal/Tajawal-Regular.ttf');
+}
+
+html {
+    direction: rtl;
+}
+
+body {
+    font-family: Tajawal;
+    color: var(--font-color);
+}
+
+.page {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.bg-image {
+    background-image: url("../../public/images/bg.svg");
+    background-size: cover;
+}
+
+.header-color {
+    color: var(--main-color);
+}
+
+.hover-color {
+    color: var(--hover-color);
+}
+
+.btn {
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: .9rem;
+    margin: 0 5px;
+}
+
+.btn:hover {
+    color: var(--main-color);
+    background-color: var(--hover-color);
+    background-image: none;
+}
+
+.linear-bg {
+    background-image: linear-gradient(45deg, var(--main-color), var(--secondary-color));
+    color: var(--hover-color);
+}
+
+.heigh-screen {
+    height: 100%;
+}

@@ -1,0 +1,84 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  User
+  Pharmacy
+  Admin
+}
+
+model User {
+  id                  String                @id @default(uuid())
+  name                String
+  email               String                @unique
+  phone               Int                   @unique
+  password            String
+  role                Role                  @default(User)
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  requests            Requests[]            @relation("createRequest")
+  donations           Donations[]           @relation("createDonation")
+  donation_to_request Donation_To_Request[] @relation("donation")
+  request_to_donation Request_To_Donation[] @relation("request")
+}
+
+model Requests {
+  id                  String                @id @default(uuid())
+  medicine            String
+  description         String?
+  image               String
+  city                String
+  neighborhood        String?
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  user                User                  @relation("createRequest", fields: [user_id], references: [id])
+  user_id             String
+  donation_to_request Donation_To_Request[] @relation("request")
+}
+
+model Donations {
+  id                  String                @id @default(uuid())
+  medicine            String
+  description         String?
+  image               String
+  quantity            String
+  expiry_Date         DateTime
+  city                String
+  neighborhood        String?
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  user                User                  @relation("createDonation", fields: [user_id], references: [id])
+  user_id             String
+  request_to_donation Request_To_Donation[] @relation("donation")
+}
+
+model Donation_To_Request {
+  request    Requests @relation("request", fields: [request_id], references: [id])
+  request_id String
+  user       User     @relation("donation", fields: [user_id], references: [id])
+  user_id    String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@id([request_id, user_id])
+}
+
+model Request_To_Donation {
+  donation    Donations @relation("donation", fields: [donation_id], references: [id])
+  donation_id String
+  user        User      @relation("request", fields: [user_id], references: [id])
+  user_id     String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@id([donation_id, user_id])
+}
