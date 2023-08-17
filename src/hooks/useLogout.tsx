@@ -9,7 +9,7 @@ export const useLogout = () => {
     const logout = () => {
         localStorage.removeItem("user-Dawa");
         dispatch({ type: "LOGOUT", payload: { token: '' } });
-        router.replace('/');
+        router.replace('/');  //eslint-disable-line
     }
 
     return { logout };
