@@ -5,6 +5,7 @@ import { donationRouter } from "./routers/donations";
 import { donation_to_requestRouter } from "./routers/donation_to_request";
 import { requestsToDonationRouter } from "./routers/request_to_donation";
 import { uploadthingRouter } from "./routers/uploadthing";
+import { messagesRouter } from "./routers/messages";
 
 /**
  * This is the primary router for your server.
@@ -17,7 +18,8 @@ export const appRouter = createTRPCRouter({
   donation: donationRouter,
   donation_to_request: donation_to_requestRouter,
   request_to_donation: requestsToDonationRouter,
-  uploadthing: uploadthingRouter
+  uploadthing: uploadthingRouter,
+  message: messagesRouter
 });
 
 // export type definition of API

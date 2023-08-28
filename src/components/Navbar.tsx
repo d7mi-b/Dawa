@@ -67,12 +67,12 @@ const Navbar = () => {
                     </section>
                     
                     <section>
-                        <button className="btn" id="btnLogin">
+                        <Link href='/login' className="btn" id="btnLogin">
                             تسجيل الدخول
-                        </button>
-                        <button className="btn linear-bg" id="btnSignup">
+                        </Link>
+                        <Link href='signup' className="btn linear-bg" id="btnSignup">
                             تسجيل 
-                        </button>
+                        </Link>
                     </section>
                 </section>
             }

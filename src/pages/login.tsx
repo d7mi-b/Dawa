@@ -17,7 +17,7 @@ const Login = () => {
     }
 
     return (
-        <section id="loginPage" className="fixed hidden top-0 w-full h-screen bg-slate-50 flex">
+        <section id="loginPage" className="fixed top-0 w-full h-screen bg-slate-50 flex">
             <section className="w-2/4 linear-bg p-14 max-lg:hidden">
                 <header>
                     <h1 className="flex text-4xl font-bold">
@@ -29,22 +29,24 @@ const Login = () => {
             </section>
 
             <section className="w-2/4 p-14 flex flex-col justify-center relative max-lg:w-full">
-                <section id="btnCloseLoginPage" className="w-4 absolute top-0 left-0 m-4 text-slate-400 hover:text-slate-600 cursor-pointer">
+                <Link href='/' id="btnCloseLoginPage" className="w-4 absolute top-0 left-0 m-4 text-slate-400 hover:text-slate-600 cursor-pointer">
                     <FontAwesomeIcon icon={faXmark} />
-                </section>
+                </Link>
 
                 <section className="text-2xl">
-                    <button 
+                    <Link
+                        href='signup'
                         className="mr-4 p-2 pl-0 rounded-md font-bold text-slate-300 hover:bg-slate-100"
                         id="btnSignupFromLoginPage"
                     >
                         تسجيل
-                    </button>
-                    <button 
+                    </Link>
+                    <Link
+                        href='login'
                         className="mr-4 p-2 pl-0 rounded-md font-bold hover:bg-slate-100"
                     >
                         تسجيل الدخول
-                    </button>
+                    </Link>
                 </section>
 
                 <form className="my-4" onSubmit={handelLogin}>
@@ -101,7 +103,7 @@ const Login = () => {
 
                 <section className="p-4 border-2 border-slate-300 text-center font-semibold">
                     <p>
-                        ليس لديك حساب؟  <button id="btnCreateAccount" className="text-sky-500 font-semibold hover:text-yellow-500">إنشاء حساب</button>
+                        ليس لديك حساب؟  <Link href='signup' id="btnCreateAccount" className="text-sky-500 font-semibold hover:text-yellow-500">إنشاء حساب</Link>
                     </p>
                 </section>
             </section>

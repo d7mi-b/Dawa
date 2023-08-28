@@ -1,11 +1,11 @@
 import { prisma } from "~/server/db";
-import { createTRPCRouter, privateProcedure } from "../trpc";
+import { createTRPCRouter, privateProcedure, publicProcedure } from "../trpc";
 import { z } from "zod";
 import type { Request } from "~/types";
 
 
 export const requestRouter = createTRPCRouter({
-    get: privateProcedure.query(async () => {
+    get: publicProcedure.query(async () => {
         const requests: Request[] = await prisma.requests.findMany();
 
         return requests;
@@ -88,7 +88,7 @@ export const requestRouter = createTRPCRouter({
         return request;
     }),
 
-    search: privateProcedure.input(z.object({
+    search: publicProcedure.input(z.object({
         search: z.string()
     })).query(async req => {
         const { search } = req.input;

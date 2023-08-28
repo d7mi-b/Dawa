@@ -1,11 +1,11 @@
 import { prisma } from "~/server/db";
-import { createTRPCRouter, privateProcedure } from "../trpc";
+import { createTRPCRouter, privateProcedure, publicProcedure } from "../trpc";
 import { z } from "zod";
 import type { Donation } from "~/types";
 
 
 export const donationRouter = createTRPCRouter({
-    get: privateProcedure.query(async () => {
+    get: publicProcedure.query(async () => {
         const donations: Donation[] = await prisma.donations.findMany();
 
         return donations;
@@ -90,7 +90,7 @@ export const donationRouter = createTRPCRouter({
         return donation;
     }),
 
-    search: privateProcedure.input(z.object({
+    search: publicProcedure.input(z.object({
         search: z.string()
     })).query(async req => {
         const { search } = req.input;

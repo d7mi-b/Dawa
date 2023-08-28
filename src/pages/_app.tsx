@@ -10,63 +10,57 @@ import { AuthProvider, ProtectRoute } from "~/context/AuthContext";
 const MyApp: AppType = ({ Component, pageProps }) => {
 
   useEffect(() => {
-    const btnLogin = document.getElementById("btnLogin")! as HTMLButtonElement;
-    const loginPage: HTMLElement = document.getElementById("loginPage")!;
-    const btnCloseLoginPage: HTMLElement = document.getElementById("btnCloseLoginPage")!;
+    // const btnLogin = document.getElementById("btnLogin")! as HTMLButtonElement;
+    // const loginPage: HTMLElement = document.getElementById("loginPage")!;
+    // const btnCloseLoginPage: HTMLElement = document.getElementById("btnCloseLoginPage")!;
 
-    btnLogin?.addEventListener('click', () => {
-      loginPage.style.display = 'flex';
-    })
+    // btnLogin?.addEventListener('click', () => {
+    //   loginPage.style.display = 'flex';
+    // })
 
-    btnCloseLoginPage?.addEventListener('click', () => {
-      loginPage.style.display = 'none';
-    })
+    // btnCloseLoginPage?.addEventListener('click', () => {
+    //   loginPage.style.display = 'none';
+    // })
 
-    const btnSignup = document.getElementById("btnSignup")! as HTMLButtonElement;
-    const signupPage: HTMLElement = document.getElementById("signupPage")!;
-    const btnCloseSignupPage: HTMLElement = document.getElementById("btnCloseSignupPage")!;
+    // const btnSignup = document.getElementById("btnSignup")! as HTMLButtonElement;
+    // const signupPage: HTMLElement = document.getElementById("signupPage")!;
+    // const btnCloseSignupPage: HTMLElement = document.getElementById("btnCloseSignupPage")!;
 
-    btnSignup?.addEventListener('click', () => {
-      signupPage.style.display = 'flex';
-    })
+    // btnSignup?.addEventListener('click', () => {
+    //   signupPage.style.display = 'flex';
+    // })
 
-    btnCloseSignupPage?.addEventListener('click', () => {
-      signupPage.style.display = 'none';
-    })
+    // btnCloseSignupPage?.addEventListener('click', () => {
+    //   signupPage.style.display = 'none';
+    // })
 
-    const btnSignupHeroSec: HTMLElement = document.getElementById('btnSignupHeroSec')!;
+    // const btnSignupFromLoginPage: HTMLElement = document.getElementById('btnSignupFromLoginPage')!;
 
-    btnSignupHeroSec?.addEventListener('click', () => {
-      signupPage.style.display = 'flex';
-    })
+    // btnSignupFromLoginPage?.addEventListener('click', () => {
+    //   signupPage.style.display = 'flex';
+    //   loginPage.style.display = 'none';
+    // })
 
-    const btnSignupFromLoginPage: HTMLElement = document.getElementById('btnSignupFromLoginPage')!;
+    // const btnCreateAccount: HTMLElement = document.getElementById('btnCreateAccount')!;
 
-    btnSignupFromLoginPage?.addEventListener('click', () => {
-      signupPage.style.display = 'flex';
-      loginPage.style.display = 'none';
-    })
+    // btnCreateAccount?.addEventListener('click', () => {
+    //   signupPage.style.display = 'flex';
+    //   loginPage.style.display = 'none';
+    // })
 
-    const btnCreateAccount: HTMLElement = document.getElementById('btnCreateAccount')!;
+    // const btnLoginFromSignupPage: HTMLElement = document.getElementById('btnLoginFromSignupPage')!;
 
-    btnCreateAccount?.addEventListener('click', () => {
-      signupPage.style.display = 'flex';
-      loginPage.style.display = 'none';
-    })
+    // btnLoginFromSignupPage?.addEventListener('click', () => {
+    //   signupPage.style.display = 'none';
+    //   loginPage.style.display = 'flex';
+    // })
 
-    const btnLoginFromSignupPage: HTMLElement = document.getElementById('btnLoginFromSignupPage')!;
+    // const btnHaveAccount: HTMLElement = document.getElementById('btnHaveAccount')!;
 
-    btnLoginFromSignupPage?.addEventListener('click', () => {
-      signupPage.style.display = 'none';
-      loginPage.style.display = 'flex';
-    })
-
-    const btnHaveAccount: HTMLElement = document.getElementById('btnHaveAccount')!;
-
-    btnHaveAccount?.addEventListener('click', () => {
-      signupPage.style.display = 'none';
-      loginPage.style.display = 'flex';
-    })
+    // btnHaveAccount?.addEventListener('click', () => {
+    //   signupPage.style.display = 'none';
+    //   loginPage.style.display = 'flex';
+    // })
     
   }, [])
 

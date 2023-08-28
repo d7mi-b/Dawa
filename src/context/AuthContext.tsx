@@ -5,6 +5,8 @@ import { useRouter } from 'next/router';
 import { useAuth } from "~/hooks/useAuth";
 import Home from "~/pages";
 import { setToken } from "~/utils/api";
+import Login from '~/pages/login';
+import Signup from '~/pages/signup';
 
 export type State = {
     user: User | null
@@ -70,8 +72,16 @@ export const ProtectRoute = ({ children }: Props) => {
 
     const router = useRouter()
 
-    if (!user && (router.pathname !== '/')) {
+    if (!user && (router.pathname === '/')) {
         return <Home />;
+    }
+
+    if (!user && (router.pathname === '/signup')) {
+        return <Signup />;
+    }
+
+    if (!user && (router.pathname !== '/login')) {
+        return <Login />;
     }
     
     return children;
