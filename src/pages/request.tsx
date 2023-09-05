@@ -18,7 +18,7 @@ const Request = () => {
         onSuccess: () => {
             setImage('');
         }
-    })
+    });
 
     const [medicine, setMedicine] = useState<string>('');
     const [description, setDescription] = useState<string>('');

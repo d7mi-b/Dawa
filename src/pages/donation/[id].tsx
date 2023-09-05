@@ -62,7 +62,7 @@ const Donation = () => {
                         <section className="mt-4">
                             <button 
                                 className={`
-                                    bg-[#00B4D8] text-[#ADE8F4] hover:bg-[#ADE8F4] hover:text-[#023E8A] w-24 p-3 
+                                    bg-[#00B4D8] text-sky-100 hover:bg-[#ADE8F4] hover:text-[#023E8A] w-24 p-3 
                                     text-md cursor-pointer rounded-md font-semibold text-center w-full
                                     disabled:bg-[#ADE8F4] disabled:text-[#023E8A] 
                                 `}

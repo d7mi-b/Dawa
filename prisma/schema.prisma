@@ -40,7 +40,7 @@ model Requests {
   neighborhood        String?
   createdAt           DateTime              @default(now())
   updatedAt           DateTime              @updatedAt
-  user                User                  @relation("createRequest", fields: [user_id], references: [id])
+  user                User                  @relation("createRequest", fields: [user_id], references: [id], onDelete: Cascade)
   user_id             String
   donation_to_request Donation_To_Request[] @relation("request")
 }
@@ -56,26 +56,26 @@ model Donations {
   neighborhood        String?
   createdAt           DateTime              @default(now())
   updatedAt           DateTime              @updatedAt
-  user                User                  @relation("createDonation", fields: [user_id], references: [id])
+  user                User                  @relation("createDonation", fields: [user_id], references: [id], onDelete: Cascade)
   user_id             String
   request_to_donation Request_To_Donation[] @relation("donation")
 }
 
 model Donation_To_Request {
-  request    Requests @relation("request", fields: [request_id], references: [id])
+  request    Requests     @relation("request", fields: [request_id], references: [id], onDelete: Cascade)
   request_id String
-  user       User     @relation("donation", fields: [user_id], references: [id])
+  user       User         @relation("donation", fields: [user_id], references: [id], onDelete: Cascade)
   user_id    String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
 
   @@id([request_id, user_id])
 }
 
 model Request_To_Donation {
-  donation    Donations @relation("donation", fields: [donation_id], references: [id])
+  donation    Donations @relation("donation", fields: [donation_id], references: [id], onDelete: Cascade)
   donation_id String
-  user        User      @relation("request", fields: [user_id], references: [id])
+  user        User      @relation("request", fields: [user_id], references: [id], onDelete: Cascade)
   user_id     String
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt

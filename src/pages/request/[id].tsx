@@ -28,9 +28,19 @@ const Request = () => {
         request_id: typeof id === 'string' ? id : ''
     });
 
+    const { data: checkUserPharamcy } = api.user.checkPharamcy.useQuery()
+
+    const { data: checkPharamcy } = api.donation_to_request.checkPharmacy.useQuery({
+        request_id: typeof id === 'string' ? id : ''
+    });
+
+    const { data: pharmacies, isLoading: loadingPharmacies } = api.donation_to_request.pharmacies.useQuery({
+        request_id: typeof id === 'string' ? id : ''
+    });
+
     const { mutate: addDonation, isLoading: loadingAdd } = api.donation_to_request.add.useMutation();
 
-    if (isLoading && loadingDonations)
+    if (isLoading && (loadingDonations || loadingPharmacies))
         return <Loading />
 
     return (
@@ -52,42 +62,81 @@ const Request = () => {
                         <p className="my-2 text-md">تاريخ الاعلان: {request?.createdAt ? getDate(request?.createdAt) : ''}</p>
                     </section>
 
-                    {
-                        !check && !checkOwner &&
-                        <section className="mt-4">
-                            <button 
-                                className={`
-                                    bg-[#00B4D8] text-[#ADE8F4] hover:bg-[#ADE8F4] hover:text-[#023E8A] w-24 p-3 
-                                    text-md cursor-pointer rounded-md font-semibold text-center w-full
-                                    disabled:bg-[#ADE8F4] disabled:text-[#023E8A] 
-                                `}
-                                onClick={() => {
-                                    addDonation({
-                                        request_id: typeof id === 'string' ? id : ''
-                                    })
-                                }}
-                                disabled={loadingAdd}
-                            >
-                                استطيع تقديم المساعدة
-                            </button>
-                        </section>
-                    }
-
-                    {
-                        check && !checkOwner &&
-                        <section className="mt-4">
-                            <section 
-                                className={`
-                                    bg-[#ADE8F4] text-[#023E8A] w-24 p-3 flex
-                                    text-md cursor-pointer rounded-md font-semibold text-center w-full
-                                    disabled:bg-[#ADE8F4] disabled:text-[#023E8A] 
-                                `}
-                            >
-                                <FontAwesomeIcon icon={faCheckCircle} className="w-5 ml-2"/>
-                                <p>لقد قدمت المساعدة</p>
+                    <section className="flex">
+                        {
+                            !checkUserPharamcy && !check && !checkOwner &&
+                            <section className="mt-4">
+                                <button 
+                                    className={`
+                                        bg-[#00B4D8] text-sky-100 hover:bg-[#ADE8F4] hover:text-[#023E8A] w-24 p-3 
+                                        text-md cursor-pointer rounded-md font-semibold text-center w-full
+                                        disabled:bg-[#ADE8F4] disabled:text-[#023E8A] 
+                                    `}
+                                    onClick={() => {
+                                        addDonation({
+                                            request_id: typeof id === 'string' ? id : ''
+                                        })
+                                    }}
+                                    disabled={loadingAdd}
+                                >
+                                    استطيع تقديم المساعدة
+                                </button>
                             </section>
-                        </section>
-                    }
+                        }
+
+                        {
+                            !checkUserPharamcy && check && !checkOwner &&
+                            <section className="mt-4">
+                                <section 
+                                    className={`
+                                        bg-[#ADE8F4] text-[#023E8A] w-24 p-3 flex
+                                        text-md cursor-pointer rounded-md font-semibold text-center w-full
+                                        disabled:bg-[#ADE8F4] disabled:text-[#023E8A] 
+                                    `}
+                                >
+                                    <FontAwesomeIcon icon={faCheckCircle} className="w-5 ml-2"/>
+                                    <p>لقد قدمت المساعدة</p>
+                                </section>
+                            </section>
+                        }
+
+                        {
+                            checkUserPharamcy && !checkPharamcy &&
+                            <section className="mt-4 mx-4">
+                                <button 
+                                    className={`
+                                        bg-[#00B4D8] text-sky-100 hover:bg-[#ADE8F4] hover:text-[#023E8A] w-24 p-3 
+                                        text-md cursor-pointer rounded-md font-semibold text-center w-full
+                                        disabled:bg-[#ADE8F4] disabled:text-[#023E8A]  
+                                    `}
+                                    onClick={() => {
+                                        addDonation({
+                                            request_id: typeof id === 'string' ? id : ''
+                                        })
+                                    }}
+                                    disabled={loadingDonations}
+                                >
+                                    متوفر لدي في الصيدلية
+                                </button>
+                            </section>
+                        }
+
+                        {
+                            checkUserPharamcy && checkPharamcy &&
+                            <section className="mt-4 mx-4">
+                                <section 
+                                    className={`
+                                        bg-[#ADE8F4] text-[#023E8A] w-24 p-3 flex
+                                        text-md cursor-pointer rounded-md font-semibold text-center w-full
+                                        disabled:bg-[#ADE8F4] disabled:text-[#023E8A] 
+                                    `}
+                                >
+                                    <FontAwesomeIcon icon={faCheckCircle} className="w-5 ml-2"/>
+                                    <p>متوفر لديك في الصيدلية</p>
+                                </section>
+                            </section>
+                        }
+                    </section>
                 </article>
             </section>
 
@@ -98,10 +147,41 @@ const Request = () => {
                 </header>
             }
 
-            <section className="my-4 px-4 grid grid-cols-2 gap-4 max-sm:grid-cols-1">
+            <section className="my-4 mb-8 px-4 grid grid-cols-2 gap-4 max-sm:grid-cols-1">
                 {
                     checkOwner && donation_to_request && donation_to_request.length > 0 &&
                     donation_to_request.map(e => {
+                        return (
+                            <article className="p-4 text-lg border rounded-md shadow" key={`${e.request_id}-${e.user_id}`}>
+                                <header className="header-color mb-2 font-semibold">
+                                    <h1>{e.user.name}</h1>
+                                </header>
+
+                                <section>
+                                    <p>البريد الالكتروني: <a href={`mailto:${e.user.email}`} className="hover:text-[#00B4D8]">{e.user.email}</a></p>
+                                    <p>الهاتف: <a href={`tel:${e.user.phone}`} className="hover:text-[#00B4D8]">{e.user.phone}</a></p>
+                                </section>
+
+                                <section className="text-sm text-left">
+                                    <p>{getDate(e.createdAt)}</p>
+                                </section>
+                            </article>
+                        )
+                    })
+                }
+            </section>
+
+            {
+                pharmacies && pharmacies.length > 0 &&
+                <header className="text-xl font-semibold my-4 px-4 max-sm:text-lg  max-sm:text-center">
+                    <h1>الصيدليات المتوفر لديها العلاج</h1>
+                </header>
+            }
+
+            <section className="my-4 px-4 grid grid-cols-2 gap-4 max-sm:grid-cols-1">
+                {
+                    pharmacies && pharmacies.length > 0 &&
+                    pharmacies.map(e => {
                         return (
                             <article className="p-4 text-lg border rounded-md shadow" key={`${e.request_id}-${e.user_id}`}>
                                 <header className="header-color mb-2 font-semibold">

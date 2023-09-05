@@ -16,6 +16,8 @@ export interface TokenValid extends JwtPayload {
 
 export type Role = "User" | "Pharmacy" | "Admin";
 
+export type RequestRole = "Donation"  | "Pharmacy";
+
 export interface User {
     id: string
     name: string

@@ -149,5 +149,20 @@ export const userRouter = createTRPCRouter({
 
             return user;
         }
+    }),
+
+    checkPharamcy: privateProcedure.query(async req => {
+        const id = req.ctx.req.user ? req.ctx.req.user : '';
+
+        const user: User | null = await prisma.user.findUnique({
+            where: {
+                id
+            }
+        })
+
+        if (user?.role === "Pharmacy")
+            return true;
+
+        return false;
     })
 })
