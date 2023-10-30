@@ -24,7 +24,11 @@ export const useLogin = () => {
 
         onError: (error) => {
             setIsLoading(false);
-            setError(error.message);
+            if (error.message === "كلمة المرور غير صحيحة" || error.message === "البريد الالكتروني غير صحيح") {
+                console.log(error.message)
+                setError(error.message);
+            } else
+                setError("لقد حدث خطأ ما, حاول مرة اخرى")
         }
     });
 

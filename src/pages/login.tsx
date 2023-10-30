@@ -33,10 +33,10 @@ const Login = () => {
                     <FontAwesomeIcon icon={faXmark} />
                 </Link>
 
-                <section className="text-2xl">
+                <section className="text-2xl max-md:text-xl">
                     <Link
                         href='signup'
-                        className="mr-4 p-2 pl-0 rounded-md font-bold text-slate-300 hover:bg-slate-100"
+                        className="mr-4 max-md:mx-auto p-2 pl-0 rounded-md font-bold text-slate-300 hover:bg-slate-100"
                         id="btnSignupFromLoginPage"
                     >
                         تسجيل
@@ -84,7 +84,7 @@ const Login = () => {
                     </section>
                     
                     {
-                        error && <p className="text-red-400 font-semibold text-center">{error}</p>
+                        error && <p className="text-red-400 font-semibold text-center my-4">{error}</p>
                     }
 
                     

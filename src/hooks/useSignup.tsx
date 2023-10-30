@@ -21,7 +21,10 @@ export const useSignup = () => {
 
         onError: (error) => {
             setIsLoading(false);
-            setError(error.message);
+            if (error.message === "يوجد حساب على هذا البريد الالكتروني" || error.message === "يوجد حساب على هذا الهاتف")
+                setError(error.message);
+            else
+                setError("لقد حدث خطأ ما, حاول مرة اخرى")
         }
     });
 

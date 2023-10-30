@@ -20,15 +20,15 @@ const Navbar = () => {
                                 <p>دواء</p>
                             </section>
                         </li>
-                        <section className="flex group max-lg:relative w-full">
+                        <section className="flex group w-full">
                             <li className="header-color flex flex-col justify-center lg:hidden">
                                 <FontAwesomeIcon icon={faBars} className="my-1 mr-4 w-5" />
                             </li>
                             <section 
                                 className={`
                                     flex max-lg:hidden max-lg:group-hover:flex max-lg:absolute max-lg:flex-col 
-                                    max-lg:p-4 max-lg:text-center max-lg:bg-slate-50 max-lg:w-96 max-lg:top-8 
-                                    max-lg:font-semibold max-lg:text-xl max-lg:z-50
+                                    max-lg:p-4 max-lg:text-center max-lg:bg-slate-50 max-lg:top-14 max-lg:right-0 
+                                    max-lg:font-semibold max-lg:text-2xl max-lg:z-50 max-lg:w-full
                                 `}
                             >
                                 <li className="flex flex-col justify-center mr-10 text-[#00B4D8] hover:text-sky-300 max-lg:mx-auto max-lg:my-4">

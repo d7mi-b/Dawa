@@ -29,7 +29,7 @@ export const userRouter = createTRPCRouter({
         if (!name || !email || !password || !role || !phone)
             throw new TRPCError({
                 code: 'BAD_REQUEST',
-                message: "Must be fill all fields"
+                message: "يجب تعبئة كل الحقول"
             });
 
         const existsEmail: User | null = await prisma.user.findUnique({
@@ -41,7 +41,19 @@ export const userRouter = createTRPCRouter({
         if (existsEmail)
             throw new TRPCError({
                 code: 'BAD_REQUEST',
-                message: 'There is account with this email',
+                message: 'يوجد حساب على هذا البريد الالكتروني',
+            });
+
+        const existsPhone: User | null = await prisma.user.findUnique({
+            where: {
+                phone
+            }
+        })
+
+        if (existsPhone)
+            throw new TRPCError({
+                code: 'BAD_REQUEST',
+                message: 'يوجد حساب على هذا الهاتف',
             });
 
         const salt: string = await bcrypt.genSalt(10); 
@@ -67,7 +79,7 @@ export const userRouter = createTRPCRouter({
         if (!email || !password)
             throw new TRPCError({
                 code: 'BAD_REQUEST',
-                message: "Must be fill all fields"
+                message: "يجب تعبئة كل الحقول"
             });
 
         const user: User | null = await prisma.user.findUnique({
@@ -79,7 +91,7 @@ export const userRouter = createTRPCRouter({
         if (!user)
             throw new TRPCError({
                 code: 'BAD_REQUEST',
-                message: "Incorrect email"
+                message: "البريد الالكتروني غير صحيح"
             });
 
         const match: boolean = await bcrypt.compare(password, user.password); 
@@ -87,7 +99,7 @@ export const userRouter = createTRPCRouter({
         if (!match)
             throw new TRPCError({
                 code: 'BAD_REQUEST',
-                message: "Incorrect password"
+                message: "كلمة المرور غير صحيحة"
             });
 
         const token: string = createToken(user.id);

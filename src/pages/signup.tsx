@@ -52,10 +52,10 @@ const Signup = () => {
                     <FontAwesomeIcon icon={faXmark} />
                 </Link>
 
-                <section className="text-2xl">
+                <section className="text-2xl max-md:text-lg">
                     <Link 
                         href='signup'
-                        className="mr-4 p-2 pl-0 rounded-md font-bold hover:bg-slate-100"
+                        className="mr-4 max-md:mx-auto p-2 pl-0 rounded-md font-bold hover:bg-slate-100"
                     >
                         تسجيل
                     </Link>
@@ -156,7 +156,7 @@ const Signup = () => {
                     </section>
 
                     {
-                        error && <p className="text-red-400 font-semibold text-center">{error}</p>
+                        error && <p className="text-red-400 font-semibold text-center my-4">{error}</p>
                     }
                     
                     <section className="my-4">
